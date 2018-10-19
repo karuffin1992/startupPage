@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+  <body onload="onLoad();">
+    <div id="clockContainer"></div>
+    <div id="weatherContainer">
+
+    </div>
+  </body>
+</html>
+<script>
+  function onLoad(){
+    getTime();
+  }
+
+  function getTime(){
+    var date = new Date();
+    var hours = date.getHours();
+    var mins = addZero(date.getMinutes());
+    var secs = addZero(date.getSeconds());
+    var timeStr = hours + ':' + mins + ':' + secs;
+    $('#clockContainer').html(timeStr);
+    var timer = setTimeout(getTime, 500);
+  }
+
+  function addZero(time) {
+    if (time < 10) {
+        time = '0' + time;
+    }
+
+    return time;
+  }
+</script>
