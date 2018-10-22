@@ -8,7 +8,11 @@
   <body onload="onLoad();">
     <div id="clockContainer"></div>
     <div id="weatherContainer">
-
+      <div id="day1"></div>
+      <div id="day2"></div>
+      <div id="day3"></div>
+      <div id="day4"></div>
+      <div id="day5"></div>
     </div>
   </body>
 </html>
@@ -38,12 +42,14 @@
     return time;
   }
 
-  var zipCode = '27511';
-  const APIKEY = 'b1f543aec09f0db96158d35a8419b943';
-  let apiURL =  'https://api.openweathermap.org/data/2.5/forecast?zip='+zipCode+',us&APPID='+APIKEY;
-
   var Result;
   async function getWeather(){
+    var zipCode = '27511';
+    // This API is for a throwaway email address
+    // This API only accounts for 5 days, not 7.
+    const APIKEY = 'b1f543aec09f0db96158d35a8419b943';
+    let apiURL =  'https://api.openweathermap.org/data/2.5/forecast?zip='+zipCode+',us&APPID='+APIKEY;
+
     fetch(apiURL)
     .then(data => data.json())
     .then(res => {
@@ -53,5 +59,46 @@
     .catch(error => console.log(error));
 
     console.log(Result);
+
+    processWeatherData(); // Process Result from REST call
+  }
+
+  // Midnight each day is an increment of 8
+  // 0, 8, 16, 24, 32
+  var record = 0;
+  var day = 0;
+
+  function processWeatherData(){
+    console.log('in processWeatherData');
+
+    while(day < 6) {
+      console.log('record: ' + record);
+      //console.log(Result.list[record].weather['0'].main);
+      getDayAndTemp(); // Get day and its temp
+      addWeatherIcons(); // Add animated icon for day
+      day++;
+      record += 8;
+    }
+  }
+
+  function getDayAndTemp(){
+
+  }
+
+  function addWeatherIcons(){
+    // need to get current weather, accessing array is being funky
+    switch('Rain') {
+      case 'Rain':
+        console.log('Rain');
+        break;
+      case 'Clouds':
+        console.log('Clouds');
+        break;
+      case 'Clear':
+        console.log('Clear');
+        break;
+      default:
+        console.log('Error: Weather not found - add to switch');
+    }
   }
 </script>
