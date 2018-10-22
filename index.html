@@ -14,7 +14,8 @@
 </html>
 <script>
   function onLoad(){
-    getTime();
+    getTime(); // Set the clock
+    getWeather(); // Get the weather forecast
   }
 
   function getTime(){
@@ -23,7 +24,9 @@
     var mins = addZero(date.getMinutes());
     var secs = addZero(date.getSeconds());
     var timeStr = hours + ':' + mins + ':' + secs;
+
     $('#clockContainer').html(timeStr);
+
     var timer = setTimeout(getTime, 500);
   }
 
@@ -33,5 +36,22 @@
     }
 
     return time;
+  }
+
+  var zipCode = '27511';
+  const APIKEY = 'b1f543aec09f0db96158d35a8419b943';
+  let apiURL =  'https://api.openweathermap.org/data/2.5/forecast?zip='+zipCode+',us&APPID='+APIKEY;
+
+  var Result;
+  async function getWeather(){
+    fetch(apiURL)
+    .then(data => data.json())
+    .then(res => {
+      Result = res
+      console.log(res)
+    })
+    .catch(error => console.log(error));
+
+    console.log(Result);
   }
 </script>
