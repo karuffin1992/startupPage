@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="./css/index.css">
   </head>
   <body onload="onLoad();">
-    <div id="clockContainer"></div>
     <div id="weatherContainer">
-      <div id="day1"></div>
-      <div id="day2"></div>
-      <div id="day3"></div>
-      <div id="day4"></div>
-      <div id="day5"></div>
+      <div id="mainIcon">
+        <div id="mainIcon_2"></div>
+      </div>
+      <div id="secondaryIcon">
+        <div id="secIcon_2"></div>
+        <div id="secIcon_3"></div>
+      </div>
     </div>
+    <div id="weatherText"></div>
+    <div id="weatherSubText"></div>
+    <div id="clockContainer"></div>
   </body>
 </html>
 <script>
@@ -44,61 +48,109 @@
 
   var Result;
   async function getWeather(){
-    var zipCode = '27511';
-    // This API is for a throwaway email address
-    // This API only accounts for 5 days, not 7.
+    const zipCode = '27511';
+    // API key is for a throwaway account
     const APIKEY = 'b1f543aec09f0db96158d35a8419b943';
-    let apiURL =  'https://api.openweathermap.org/data/2.5/forecast?zip='+zipCode+',us&APPID='+APIKEY;
+    let apiURL =  'https://api.openweathermap.org/data/2.5/weather?zip='+zipCode+',us&APPID='+APIKEY;
 
-    fetch(apiURL)
+    await fetch(apiURL)
     .then(data => data.json())
-    .then(res => {
-      Result = res
-      console.log(res)
+    .then((res) => {
+      Result = res;
+      //console.log(res);
     })
     .catch(error => console.log(error));
-
-    console.log(Result);
 
     processWeatherData(); // Process Result from REST call
   }
 
-  // Midnight each day is an increment of 8
-  // 0, 8, 16, 24, 32
-  var record = 0;
-  var day = 0;
-
   function processWeatherData(){
-    console.log('in processWeatherData');
-
-    while(day < 6) {
-      console.log('record: ' + record);
-      //console.log(Result.list[record].weather['0'].main);
-      getDayAndTemp(); // Get day and its temp
-      addWeatherIcons(); // Add animated icon for day
-      day++;
-      record += 8;
-    }
+    getDayAndTemp(); // Get day and its temp
+    addWeatherIcons(); // Add animated icon for day
   }
 
   function getDayAndTemp(){
+    var cityName = Result.name;
 
+    var today = new Date().getDay();
+    var weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+	  var dayOfWeek = weekday[today];
+
+    var temperature = convertToFahrenheit();
+
+    var output = cityName;
+    var output2 = dayOfWeek + ', ' + temperature + '°F';
+
+    $('#weatherText').html(output);
+    $('#weatherSubText').html(output2);
+  }
+
+  function convertToFahrenheit(){
+    var kelvinTemp = Result.main.temp;
+    var fahrTemp = Math.round(((kelvinTemp - 273.15) * 1.8) + 32);
+
+    return fahrTemp;
   }
 
   function addWeatherIcons(){
-    // need to get current weather, accessing array is being funky
-    switch('Rain') {
+    // OpenWeatherMap API has weather conditions
+    switch(Result.weather['0'].main){
       case 'Rain':
-        console.log('Rain');
+        rainyWeather();
+        break;
+      case 'Thunderstorm':
+        stormyWeather();
+        break;
+      case 'Snow':
+        blizzardWeather();
         break;
       case 'Clouds':
-        console.log('Clouds');
+        cloudyWeather();
+        break;
+      case 'Mist':
+        cloudyWeather();
         break;
       case 'Clear':
-        console.log('Clear');
+        clearWeather();
         break;
       default:
         console.log('Error: Weather not found - add to switch');
     }
+  }
+
+  // Weather Icons
+  // Check Josh Bader's code for animated SVG icons
+  function clearWeather() {
+    $('#weatherContainer').addClass('icon sunny');
+    $('#mainIcon').addClass('sun');
+    $('#mainIcon_2').addClass('rays');
+  }
+
+  function cloudyWeather() {
+    $('#weatherContainer').addClass('icon cloudy');
+    $('#mainIcon').addClass('cloud');
+    $('#secondaryIcon').addClass('cloud');
+  }
+
+  function blizzardWeather() {
+    $('#weatherContainer').addClass('icon flurries');
+    $('#mainIcon').addClass('cloud');
+    $('#secondaryIcon').addClass('snow');
+    $('#secIcon_2').addClass('flake');
+    $('#secIcon_3').addClass('flake');
+  }
+
+  function stormyWeather() {
+    $('#weatherContainer').addClass('icon thunder-storm');
+    $('#mainIcon').addClass('cloud');
+    $('#secondaryIcon').addClass('lightning');
+    $('#secIcon_2').addClass('bolt');
+    $('#secIcon_3').addClass('bolt');
+  }
+
+  function rainyWeather() {
+    $('#weatherContainer').addClass('icon rainy');
+    $('#mainIcon').addClass('cloud');
+    $('#secondaryIcon').addClass('rain');
   }
 </script>
