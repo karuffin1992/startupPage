@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="./css/index.css">
   </head>
   <body onload="onLoad();">
+    <div id="clockContainer">
+      <div id="date"></div>
+      <div id="time"></div>
+    </div>
     <div id="weatherContainer">
       <div id="mainIcon">
         <div id="mainIcon_2"></div>
@@ -16,8 +20,6 @@
       </div>
     </div>
     <div id="weatherText"></div>
-    <div id="weatherSubText"></div>
-    <div id="clockContainer"></div>
   </body>
 </html>
 <script>
@@ -28,12 +30,26 @@
 
   function getTime(){
     var date = new Date();
+
+    const weekday = ['Sunday', 'Monday', 'Tuesday'
+      , 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const months = ['January','February','March','April','May','June'
+      ,'July','August','September','October','November','December'];
+
     var hours = date.getHours();
     var mins = addZero(date.getMinutes());
     var secs = addZero(date.getSeconds());
     var timeStr = hours + ':' + mins + ':' + secs;
 
-    $('#clockContainer').html(timeStr);
+    var today = date.getDay();
+    var month = date.getUTCMonth();
+    var day = date.getUTCDate();
+    var year = date.getUTCFullYear();
+    var dateStr = months[month] + ' ' + day + ', ' + year;
+    var dayOfWeek = weekday[today];
+
+    $('#time').html(timeStr);
+    $('#date').html(dateStr + ' | ' + dayOfWeek);
 
     var timer = setTimeout(getTime, 500);
   }
@@ -71,18 +87,10 @@
 
   function getDayAndTemp(){
     var cityName = Result.name;
-
-    var today = new Date().getDay();
-    var weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-	  var dayOfWeek = weekday[today];
-
     var temperature = convertToFahrenheit();
-
-    var output = cityName;
-    var output2 = dayOfWeek + ', ' + temperature + '°F';
+    var output = cityName + ' | ' + temperature + '° F';
 
     $('#weatherText').html(output);
-    $('#weatherSubText').html(output2);
   }
 
   function convertToFahrenheit(){
