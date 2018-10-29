@@ -1,68 +1,6 @@
 /* Main */
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-body {
-  background-color: black;
-  font-family: 'Raleway', sans-serif;
-}
-
-#weatherContainer{
-  position: fixed;
-  top: 32%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-}
-
-#weatherText {
-  position: fixed;
-  top: 22%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  color: #ddd;
-}
-
-#weatherSubText {
-  position: fixed;
-  top: 23%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  color: #ddd;
-}
-
-#time {
-  position: fixed;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 5em;
-  color: white;
-}
-
-#date {
-  position: fixed;
-  top: 8%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1em;
-  color: white;
-}
-
-/* Weather effects */
 html { box-sizing: border-box; }
 html *,
 html *:before,
@@ -75,23 +13,72 @@ body {
   color: #161616;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-color: currentColor;
+  background-color: black;
 }
 
-h1 {
-  margin-bottom: 1.375em;
-  color: #fff;
-  font-weight: 100;
-  font-size: 2em;
-  text-transform: uppercase;
+li, h4 {
+  text-align: left;
 }
-p,
-a {
-  color: rgba(255,255,255,0.3);
-  font-size: small;
-}
-p { margin: 1.375rem 0; }
 
+ul {
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+}
+
+#weatherContainer{
+  display: block;
+  text-align: center;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  height: 115px;
+  width: 425px;
+}
+
+#weatherText {
+  display: block;
+  text-align: center;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  color: #ddd;
+  height: 25px;
+  width: 425px;
+}
+
+#time {
+  display: block;
+  font-size: 5em;
+  color: white;
+  width: 425px;
+  height: 90px;
+}
+
+#date {
+  display: block;
+  font-size: 1em;
+  color: white;
+  width: 425px;
+  height: 20px;
+}
+
+#bookmarkContainer {
+  display: block;
+  font-size: 1.5em;
+  color: white;
+  height: 350px;
+  width: 1200px;
+}
+
+#bookmarkContainer div {
+  float: left;
+  width: 33%;
+}
+
+/* Weather effects */
 .icon {
   position: relative;
   display: inline-block;
