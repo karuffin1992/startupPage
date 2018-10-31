@@ -7,13 +7,18 @@ html *:before,
 html *:after { box-sizing: inherit; }
 
 body {
-  max-width: 42em;
-  padding: 2em;
-  margin: 0 auto;
+  min-width: 1200px;
+  margin: 0;
   color: #161616;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   background-color: black;
+}
+
+.pageContainer {
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 1200px;
 }
 
 li, h4 {
@@ -28,41 +33,34 @@ li {
   list-style: none;
 }
 
-#weatherContainer{
-  display: block;
-  text-align: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  height: 115px;
-  width: 425px;
-}
-
-#weatherText {
-  display: block;
-  text-align: center;
-  justify-content: center;
-  list-style-type: none;
-  padding: 0;
-  color: #ddd;
-  height: 25px;
-  width: 425px;
-}
-
-#time {
-  display: block;
-  font-size: 5em;
-  color: white;
-  width: 425px;
-  height: 90px;
+#clock {
+  position: relative;
+  padding-top: 1em;
 }
 
 #date {
   display: block;
   font-size: 1em;
   color: white;
-  width: 425px;
   height: 20px;
+}
+
+#time {
+  display: block;
+  font-size: 5em;
+  color: white;
+  height: 100px;
+}
+
+#weatherContainer{
+  text-align: center;
+}
+
+#weatherText {
+  display: block;
+  text-align: center;
+  color: #ddd;
+  height: 25px;
 }
 
 #bookmarkContainer {
@@ -82,8 +80,7 @@ li {
 .icon {
   position: relative;
   display: inline-block;
-  width: 12em;
-  height: 10em;
+  height: 9em;
   font-size: 1em; /* control icon size here */
 }
 
