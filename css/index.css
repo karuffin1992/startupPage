@@ -21,16 +21,22 @@ body {
   width: 1200px;
 }
 
-li, h4 {
-  text-align: left;
-}
-
 ul {
   padding: 0px;
 }
 
 li {
   list-style: none;
+  padding: 10px 10px 10px 10px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#clockContainer {
+  padding-top: 2em;
 }
 
 #clock {
@@ -65,10 +71,9 @@ li {
 
 #bookmarkContainer {
   display: block;
-  font-size: 1.5em;
+  text-align: center;
   color: white;
   height: 350px;
-  width: 1200px;
 }
 
 #bookmarkContainer div {
