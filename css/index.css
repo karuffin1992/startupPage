@@ -1,6 +1,4 @@
 /* Main */
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
 html { box-sizing: border-box; }
 html *,
 html *:before,
@@ -79,6 +77,78 @@ a {
 #bookmarkContainer div {
   float: left;
   width: 33%;
+}
+
+/* Bookmarks */
+.box {
+    width: 115px;
+    height: 130px;
+    overflow: hidden;
+    float: left;
+    margin: 0 10px;
+    background: #0E0E0E;
+    border-radius: 3px;
+    padding: 5px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    border-width: 5px 0;
+    border-style: solid;
+    border-color: rgb(57, 57, 57);
+}
+
+.boxContent, .boxContent a {
+	font-size:0.78em;
+	letter-spacing:0.02em;
+  -webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	margin-top:50px;
+}
+
+.box:hover .boxContent, .box:hover .boxContent ul {
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	opacity:1;
+	margin:0;
+}
+
+.box {
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	height:250px;
+	/* if you want to expand boxes only to the bottom, delete the line below (just margin-top) */
+	margin-top:-60px;
+	border-width: 5px 0;
+    border-style: solid;
+    border-color: #377992;
+}
+
+ul.linkBox {
+	padding: 0;
+	text-align:center;
+	opacity:0.0;
+	-webkit-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+
+li.linkItem {
+	list-style:none;
+	display:inline-block;
+	padding: 1px 5px;
+	min-width:50px;
+}
+
+li.linkItem a.linkA {
+	color:#ababab;
+	text-decoration:none;
+}
+
+li.linkItem:hover a.linkA {
+	text-decoration:underline;
 }
 
 /* Weather effects */
