@@ -7,29 +7,33 @@
     <title>Home</title>
   </head>
   <body onload="onLoad();">
-    <section id="clock">
-      <div id="clockContainer" class="pageContainer">
-        <div id="date" class="pageContainer"></div>
-        <div id="time" class="pageContainer"></div>
-      </div>
-    </section>
-    <section id="weather" class="pageContainer">
-      <div id="weatherText" class="pageContainer"></div>
-      <div id="weatherContainer" class="pageContainer">
-        <div id="mainIcon">
-          <div id="mainIcon_2"></div>
+    <section id="timeWeather">
+      <div id="timeWeather" class="bigBox">
+        <div id="clock">
+          <div id="clockContainer" class="pageContainerNoWidth">
+            <div id="date" class="pageContainerNoWidth"></div>
+            <div id="time" class="pageContainerNoWidth"></div>
+          </div>
         </div>
-        <div id="secondaryIcon">
-          <div id="secIcon_2"></div>
-          <div id="secIcon_3"></div>
+        <div id="weather" class="pageContainerNoWidth">
+          <div id="weatherText" class="pageContainerNoWidth"></div>
+          <div id="weatherContainer" class="pageContainerNoWidth">
+            <div id="mainIcon">
+              <div id="mainIcon_2"></div>
+            </div>
+            <div id="secondaryIcon">
+              <div id="secIcon_2"></div>
+              <div id="secIcon_3"></div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
     <section id="bookmark" class="pageContainer">
       <div id="bookmarkContainer" class="pageContainer">
-        <div id="generalList" class="box">
+        <div id="generalList" class="box bkContainer">
           <div class="boxContent">
-            <h2>General</h2>
+            <p>General</p>
             <ul class="linkBox">
               <li class="linkItem"><a class="linkA" href="https://www.reddit.com/">Reddit</a></li>
               <li class="linkItem"><a class="linkA" href="https://www.youtube.com/">YouTube</a></li>
@@ -38,9 +42,9 @@
             </ul>
           </div>
         </div>
-        <div id="devList" class="box">
+        <div id="devList" class="box bkContainer">
           <div class="boxContent">
-            <h2>Dev Stuff</h2>
+            <p>Dev Stuff</p>
             <ul class="linkBox">
               <li class="linkItem"><a class="linkA" href="https://www.github.com/">Github</a></li>
               <li class="linkItem"><a class="linkA" href="https://www.udemy.com/">Udemy</a></li>
@@ -48,9 +52,9 @@
             </ul>
           </div>
         </div>
-        <div id="animeList" class="box">
+        <div id="animeList" class="box bkContainer">
           <div class="boxContent">
-           <h2>Anime/Korean</h2>
+           <p>Anime/Korean</p>
            <ul class="linkBox">
              <li class="linkItem"><a class="linkA" href="https://www.masterani.me/">MasterAnime</a></li>
              <li class="linkItem"><a class="linkA" href="https://www.animeshow.tv/">Animeshow</a></li>

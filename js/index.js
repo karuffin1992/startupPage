@@ -81,6 +81,9 @@ function addWeatherIcons(){
     case 'Rain':
       rainyWeather();
       break;
+    case 'Drizzle':
+      rainyWeather();
+      break;
     case 'Thunderstorm':
       stormyWeather();
       break;
@@ -98,6 +101,7 @@ function addWeatherIcons(){
       break;
     default:
       console.log('Error: Weather not found - add to switch');
+      console.log(Result.weather['0'].main);
   }
 }
 
