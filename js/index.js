@@ -96,6 +96,9 @@ function addWeatherIcons(){
     case 'Mist':
       cloudyWeather();
       break;
+    case 'Haze':
+      cloudyWeather();
+      break;
     case 'Clear':
       clearWeather();
       break;

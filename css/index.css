@@ -5,42 +5,37 @@ html *:before,
 html *:after { box-sizing: inherit; }
 
 body {
-  min-width: 1200px;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   background-color: black;
-  background-image: url('../samurai.jpg');
+  background-image: url('../background.png');
   background-size: 100%;
   background-repeat: no-repeat;
 }
 
 .pageContainer {
-  margin: 0 auto;
-  padding: 0 32px;
-  width: 1200px;
-}
-
-.pageContainerNoWidth {
-  margin: 0 auto;
-  padding: 0 32px;
+  padding: 1em;
+  opacity: .9;
 }
 
 /* Time/Weather */
 .bigBox {
-  height: 330px;
+  height: 195px;
   overflow: hidden;
   background-color: black;
   border-radius: 3px;
-  border-width: 5px 5px;
+  border-width: 5px 0px;
   border-style: solid;
   border-color: #377992;
-  opacity: .96;
-  width: 32%;
+  width: 600px;
   margin: 0 auto;
+  box-shadow: 0 0 15px hsla(0,0%,0%,.8);
 }
 
 #clock {
   padding-top: 2em;
+  padding-left: 3em;
+  float: left;
 }
 
 #date {
@@ -54,11 +49,13 @@ body {
   display: block;
   font-size: 5em;
   color: white;
-  height: 100px;
+  height: 90px;
 }
 
-#weatherContainer{
-  text-align: center;
+#weather {
+  padding-top: 1.75em;
+  padding-right: 7.5em;
+  float: right;
 }
 
 #weatherText {
@@ -68,24 +65,42 @@ body {
   height: 25px;
 }
 
-/* Bookmarks */
-#bookmark {
-  padding-top: 2em;
+/* Search */
+#searchContainer {
+  margin: 0 auto;
+  width: 1100px;
 }
 
+form input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 2px solid #000000;
+  border-radius: 25px;
+  font-size: 1.25rem;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+form input:focus{
+  outline: none;
+}
+
+/* Bookmarks */
 #bookmarkContainer {
-  display: block;
   text-align: center;
   color: white;
   height: 130px;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .box {
-  width: 25%;
+  width: 303px;
   height: 130px;
   overflow: hidden;
   float: left;
-  margin: 0 35px;
   background-color: black;
   border-radius: 3px;
   padding: 5px;
@@ -95,7 +110,8 @@ body {
   border-width: 5px 0;
   border-style: solid;
   border-color: #377992;
-  opacity: .96;
+  margin: 0em 3em 0em 3em;
+  box-shadow: 0 0 15px hsla(0,0%,0%,.8);
 }
 
 .boxContent, .boxContent a {
@@ -144,7 +160,7 @@ li.linkItem {
 	list-style: none;
 	display: inline-block;
 	padding: 7px 5px;
-	min-width: 180px;
+	width: 100%;
   font-size: 20px;
 }
 
@@ -182,6 +198,7 @@ li.linkItem:hover a.linkA {
     -2.1875em 0.6875em 0 -0.3125em #fff,
     2.0625em 0.9375em 0 -0.5625em #fff;
 }
+
 .cloud:after {
   content: '';
   position: absolute;
@@ -193,6 +210,7 @@ li.linkItem:hover a.linkA {
   background: currentColor;
   box-shadow: 0 0.4375em 0 -0.0625em #fff;
 }
+
 .cloud:nth-child(2) {
   z-index: 0;
   background: #fff;
@@ -206,7 +224,10 @@ li.linkItem:hover a.linkA {
   transform: scale(0.5) translate(6em, -3em);
   animation: cloud 4s linear infinite;
 }
-.cloud:nth-child(2):after { background: #fff; }
+
+.cloud:nth-child(2):after {
+  background: #fff;
+}
 
 .sun {
   position: absolute;
@@ -220,6 +241,7 @@ li.linkItem:hover a.linkA {
   box-shadow: 0 0 0 0.375em #fff;
   animation: spin 12s infinite linear;
 }
+
 .rays {
   position: absolute;
   top: -2em;
@@ -232,8 +254,8 @@ li.linkItem:hover a.linkA {
   border-radius: 0.25em;
   box-shadow: 0 5.375em #fff;
 }
-.rays:before,
-.rays:after {
+
+.rays:before, .rays:after {
   content: '';
   position: absolute;
   top: 0em;
@@ -247,16 +269,16 @@ li.linkItem:hover a.linkA {
   border-radius: 0.25em;
   box-shadow: 0 5.375em #fff;
 }
+
 .rays:before {
   transform: rotate(120deg);
 }
+
 .cloud + .sun {
   margin: -2em 1em;
 }
 
-.rain,
-.lightning,
-.snow {
+.rain, .lightning, .snow {
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -295,6 +317,7 @@ li.linkItem:hover a.linkA {
   opacity: 0.3;
   animation: lightning 2s linear infinite;
 }
+
 .bolt:nth-child(2) {
   width: 0.5em;
   height: 0.25em;
@@ -303,8 +326,8 @@ li.linkItem:hover a.linkA {
   opacity: 0.2;
   animation: lightning 1.5s linear infinite;
 }
-.bolt:before,
-.bolt:after {
+
+.bolt:before, .bolt:after {
   content: '';
   position: absolute;
   z-index: 2;
@@ -317,6 +340,7 @@ li.linkItem:hover a.linkA {
   border-left: 0.5em solid transparent;
   transform: skewX(-10deg);
 }
+
 .bolt:after {
   margin: -0.25em 0 0 -0.25em;
   border-top: 0.75em solid;
@@ -325,6 +349,7 @@ li.linkItem:hover a.linkA {
   border-left: 0.75em solid;
   transform: skewX(-10deg);
 }
+
 .bolt:nth-child(2):before {
   margin: -0.75em 0 0 -0.5em;
   border-top: 0.625em solid transparent;
@@ -332,6 +357,7 @@ li.linkItem:hover a.linkA {
   border-bottom: 0.375em solid;
   border-left: 0.25em solid transparent;
 }
+
 .bolt:nth-child(2):after {
   margin: -0.125em 0 0 -0.125em;
   border-top: 0.375em solid;
@@ -340,8 +366,7 @@ li.linkItem:hover a.linkA {
   border-left: 0.375em solid;
 }
 
-.flake:before,
-.flake:after {
+.flake:before, .flake:after {
   content: '\2744';
   position: absolute;
   top: 50%;
@@ -352,25 +377,27 @@ li.linkItem:hover a.linkA {
   opacity: 0.2;
   animation: spin 8s linear infinite reverse;
 }
+
 .flake:after {
   margin: 0.125em 0 0 -1em;
   font-size: 1.5em;
   opacity: 0.4;
   animation: spin 14s linear infinite;
 }
+
 .flake:nth-child(2):before {
   margin: -0.5em 0 0 0.25em;
   font-size: 1.25em;
   opacity: 0.2;
   animation: spin 10s linear infinite;
 }
+
 .flake:nth-child(2):after {
   margin: 0.375em 0 0 0.125em;
   font-size: 2em;
   opacity: 0.4;
   animation: spin 16s linear infinite reverse;
 }
-
 
 /* Animations */
 

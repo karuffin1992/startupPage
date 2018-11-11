@@ -7,17 +7,17 @@
     <title>Home</title>
   </head>
   <body onload="onLoad();">
-    <section id="timeWeather">
+    <section id="timeWeather" class="pageContainer">
       <div id="timeWeatherContainer" class="bigBox">
         <div id="clock">
-          <div id="clockContainer" class="pageContainerNoWidth">
-            <div id="date" class="pageContainerNoWidth"></div>
-            <div id="time" class="pageContainerNoWidth"></div>
+          <div id="clockContainer">
+            <div id="date"></div>
+            <div id="time"></div>
+            <div id="weatherText"></div>
           </div>
         </div>
-        <div id="weather" class="pageContainerNoWidth">
-          <div id="weatherText" class="pageContainerNoWidth"></div>
-          <div id="weatherContainer" class="pageContainerNoWidth">
+        <div id="weather">
+          <div id="weatherContainer">
             <div id="mainIcon">
               <div id="mainIcon_2"></div>
             </div>
@@ -29,9 +29,16 @@
         </div>
       </div>
     </section>
+    <section id="search" class="pageContainer">
+      <div id="searchContainer">
+        <form action="https://google.com/search" method="get" target="_blank">
+          <input type="text" name="q" placeholder="Search..." autofocus="autofocus" autocomplete="off"/>
+        </form>
+      </div>
+    </section>
     <section id="bookmark" class="pageContainer">
-      <div id="bookmarkContainer" class="pageContainer">
-        <div id="generalList" class="box bkContainer">
+      <div id="bookmarkContainer">
+        <div id="generalList" class="box">
           <div class="boxContent">
             <p>General</p>
             <ul class="linkBox">
@@ -42,7 +49,7 @@
             </ul>
           </div>
         </div>
-        <div id="devList" class="box bkContainer">
+        <div id="devList" class="box">
           <div class="boxContent">
             <p>Dev Stuff</p>
             <ul class="linkBox">
@@ -52,7 +59,7 @@
             </ul>
           </div>
         </div>
-        <div id="animeList" class="box bkContainer">
+        <div id="animeList" class="box">
           <div class="boxContent">
            <p>Anime/Korean</p>
            <ul class="linkBox">
